@@ -1,0 +1,19 @@
+- hosts: EC2AMAZ-NGLQBHB
+  gather_facts: no
+  tasks: 
+    - name: create a new web site 'MyWeb' 
+      win_iis_website:
+        name: MyWeb
+        site_id: 10
+        state: started
+        port: 80
+        ip: 172.31.46.173
+        hostname: www.myweb.jp
+        application_pool: MyWebAppPool
+        physical_path: D:\Projects\MyWeb\wwwroot
+        parameters: 
+           logfile.directory:D:\Projects\MyWeb\LogFiles|logfile.logExtFileFlags:Date, Time, ClientIP, UserName, ServerIP, Method, UriStem, UriQuery, HttpStatus, Win32Status, BytesSent, BytesRecv, TimeTaken, ServerPort, UserAgent, Referer, HttpSubStatus # ログ設定の変更
+      register: website
+
+    - name: debug result var # 確認のため結果を表示
+      debug: var=website

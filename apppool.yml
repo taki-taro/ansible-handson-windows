@@ -1,0 +1,20 @@
+- hosts: EC2AMAZ-NGLQBHB
+  gather_facts: no
+  tasks: 
+    - name: create a new application pool 'MyWebAppPool' # 新しいAppPoolを作成して開始
+      win_iis_webapppool:
+        name: MyWebAppPool
+        state: started
+
+    - name: change application pool attributes # ワーカープロセスの実行ユーザーを「myweb_usr」に変更
+      win_iis_webapppool:
+        name: MyWebAppPool
+        attributes:
+          managedRuntimeVersion: v4.0
+          autoStart: yes
+          startMode: AlwaysRunning
+          processModel.identityType: SpecificUser
+          processModel.userName: myweb_usr
+          processModel.password: Bmwrx7813&&ymz
+          processModel.loadUserProfile: False
+
