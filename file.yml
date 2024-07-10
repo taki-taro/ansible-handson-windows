@@ -1,0 +1,21 @@
+- hosts: EC2AMAZ-NGLQBHB
+  gather_facts: no
+  tasks: 
+    - name: create a new directory 'MyWeb'  # 新規ディレクトリを作成します
+      win_file:
+        path: D:\Projects\MyWeb
+        state: directory
+
+    - name: add specific AD user to execute webappsand allow rights # 作成したディレクトリにアクセス権を追加
+      win_acl:
+        path: D:\Projects\MyWeb
+        user: myweb_usr # ユーザー名
+        rights: ReadAndExecute # 権限（読み取りと実行）
+        type: allow
+        state: present
+        inherit: ContainerInherit, ObjectInherit # 継承可
+
+    - name: copy web files # Ansible管理ホストからリモートサーバーへファイルをコピー
+      win_copy:
+        src: /mydata/deploy/MyWeb/
+        dest: D:\Projects\MyWeb

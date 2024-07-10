@@ -1,0 +1,10 @@
+- hosts: EC2AMAZ-NGLQBHB
+  gather_facts: no
+  tasks: 
+    - name: add new webapplication '/vapp'
+      win_iis_webapplication:
+        name: /vapp
+        site: MyWeb
+        application_pool: MyWebAppPool
+        state: present
+        physical_path: D:\Projects\MyWeb\webapp # リソースパス

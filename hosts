@@ -1,0 +1,9 @@
+[windows]
+EC2AMAZ-NGLQBHB ansible_host=ec2-52-194-186-179.ap-northeast-1.compute.amazonaws.com
+
+[windows:vars]
+ansible_user=ansibleuser
+ansible_password=Bmwrx7813&&ymz
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
