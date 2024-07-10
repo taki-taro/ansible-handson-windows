@@ -10,7 +10,7 @@
         ip: 172.31.46.173
         hostname: www.myweb.jp
         application_pool: MyWebAppPool
-        physical_path: D:\Projects\MyWeb\wwwroot
+        physical_path: C:\Projects\MyWeb\wwwroot
         parameters: 
            logfile.directory:D:\Projects\MyWeb\LogFiles|logfile.logExtFileFlags:Date, Time, ClientIP, UserName, ServerIP, Method, UriStem, UriQuery, HttpStatus, Win32Status, BytesSent, BytesRecv, TimeTaken, ServerPort, UserAgent, Referer, HttpSubStatus # ログ設定の変更
       register: website
